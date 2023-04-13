@@ -21,4 +21,18 @@ public class OpportunityTriggerHandler {
             }
         }
     }
+    
+    // Triggger.oldMap - Map<Id, sObject> ~= Map<Id, Opportunity>
+    // Opportunity Id - Opportunity (Old Version) - Amount , StageName
+    public static void handleBeforeUpdate(List<Opportunity> newRecords, Map<Id, Opportunity> oldRecordMap){
+        for(Opportunity newRecord: newRecords){
+            Opportunity oldRecord = oldRecordMap.get(newRecord.Id);
+            if(oldRecord.StageName == 'Closed Won' && newRecord.StageName == 'Closed Won' &&  oldRecord.Amount <> newRecord.Amount){
+                newRecord.Amount.addError('Amount Can not be changed once the Stage is Set to Closed Won');
+            }
+            if(oldRecord.StageName == 'Closed Won' && newRecord.StageName == 'Closed Won' &&  oldRecord.Discount__c <> newRecord.Discount__c){
+                newRecord.Discount__c.addError('Discount Can not be changed once the Stage is Set to Closed Won');
+            }
+        }
+    }
 }

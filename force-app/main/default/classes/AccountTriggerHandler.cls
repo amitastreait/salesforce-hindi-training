@@ -1,11 +1,13 @@
 public class AccountTriggerHandler {
     // before insert
     public static void handleBeforeInsert(List<Account> accountList){
-		AccountTriggerHelper.updateAccountShippingAddress(accountList);       
+		AccountTriggerHelper.updateAccountShippingAddress(accountList); 
+        AccountTriggerHelper.checkDuplicateAccount(accountList);
     }
     // before update
     public static void handleBeforeUpdate(List<Account> accountList){
         AccountTriggerHelper.updateAccountShippingAddress(accountList);
+        AccountTriggerHelper.checkDuplicateAccount(accountList);
     }
     // after insert
     public static void handleAfterInsert(List<Account> accountList){

@@ -53,5 +53,42 @@ public class AccountTriggerHelper {
         }
     }
     
+    public static void checkDuplicateAccount(List<Account> newRecords){
+        /*
+         * The business got to know that there are multiple accounts with the same name and rating.
+		   Now, as a developer, you need to make sure that no new duplicates are being
+		   created with the same name and rating. 
+		*/
+        Set<String> accountNameSet = new Set<String>();
+        Set<String> accountRatingSet = new Set<String>();
+        // newRecords - 2
+        // Demo - Name
+        // Hot - Rating
+        // (Demo, Demo)
+        // (Rating, Rating)
+        // {Demo}
+        // {Rating}
+        for(Account acc : newRecords){
+            accountNameSet.add(acc.Name);
+            accountRatingSet.add(acc.Rating);
+        }
+        
+        List<Account> existingAccountList = [SELECT Id, Name, Rating 
+                                             FROM Account
+                                             WHERE Name IN: accountNameSet
+                                             AND Rating IN: accountRatingSet
+                                             AND Id NOT IN :newRecords
+                                             LIMIT 50000
+                                           ];
+        for(Account acc : newRecords){ //Trigger.New
+            for(Account extAcc: existingAccountList){
+                if(acc.Name == extAcc.Name && acc.Rating == extAcc.Rating){
+                    acc.addError('Duplicate account already exists with same name and rating!');
+                    acc.Name.addError('Duplicate account already exists with same name and rating!');
+                    acc.Rating.addError('Duplicate account already exists with same name and rating!');
+                }
+            }
+        }
+    }
     
 }
