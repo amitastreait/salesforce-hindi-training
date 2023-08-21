@@ -1,8 +1,7 @@
-public class AccountTriggerHelper {
+public with sharing class AccountTriggerHelper {
 
     // reusable methods - focus
     // further processing
-    // 
     public static void updateAccountShippingAddress(List<Account> accountList){
         /*
             Develop an Apex Trigger so that every time 
@@ -31,11 +30,11 @@ public class AccountTriggerHelper {
                 ShippingPostalCode
                 ShippingCountry
 			*/
-            if(acc.ShippingStreet == null ){
+            if(acc.ShippingStreet == null ){ // Condition #1
                 
-            }else if(acc.ShippingCity == null){
+            }else if(acc.ShippingCity == null){ // Condition #2
                 
-            }else if(acc.ShippingCountry == null){
+            }else if(acc.ShippingCountry == null){ // #condition #3
                 
             }
             System.debug(acc.ShippingAddress);
@@ -68,9 +67,9 @@ public class AccountTriggerHelper {
         // (Rating, Rating)
         // {Demo}
         // {Rating}
-        for(Account acc : newRecords){
+        for(Account acc : newRecords){ // 10 record
             accountNameSet.add(acc.Name);
-            accountRatingSet.add(acc.Rating);
+            accountRatingSet.add(acc.Rating); // 4 Rating
         }
         
         List<Account> existingAccountList = [SELECT Id, Name, Rating 
@@ -79,15 +78,32 @@ public class AccountTriggerHelper {
                                              AND Rating IN: accountRatingSet
                                              AND Id NOT IN :newRecords
                                              LIMIT 50000
-                                           ];
+                                           ]; // 1 Record
+        
+        Set<String> existingAccountNameSet = new Set<String>();
+        Set<String> existingAccountRatingSet = new Set<String>();
+        for(Account acc : existingAccountList){
+            existingAccountNameSet.add(acc.Name); // Already present inside Salesforce Account Object
+            existingAccountRatingSet.add(acc.Rating); // Already present inside Salesforce Account Object
+        }
+        
         for(Account acc : newRecords){ //Trigger.New
-            for(Account extAcc: existingAccountList){
+            // Salesforce.com, Hot
+            if(existingAccountNameSet.contains(acc.Name) && existingAccountRatingSet.contains(acc.Rating)){
+                   acc.addError('Duplicate account already exists with same name '+acc.Name+' and rating! '+acc.Rating);
+                   acc.Name.addError('Duplicate account already exists with same name '+acc.Name+' and rating! '+acc.Rating);
+                   acc.Rating.addError('Duplicate account already exists with same name '+acc.Name+' and rating! '+acc.Rating);
+            }else{
+                existingAccountNameSet.add(acc.Name); // Salesforce.com
+                existingAccountRatingSet.add(acc.Rating); // Hot
+            }
+            /*for(Account extAcc: existingAccountList){
                 if(acc.Name == extAcc.Name && acc.Rating == extAcc.Rating){
                     acc.addError('Duplicate account already exists with same name and rating!');
                     acc.Name.addError('Duplicate account already exists with same name and rating!');
                     acc.Rating.addError('Duplicate account already exists with same name and rating!');
                 }
-            }
+            }*/
         }
     }
     
