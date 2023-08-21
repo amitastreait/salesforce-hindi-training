@@ -2,7 +2,7 @@ name: GitHub Actions
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: 
   workflow_dispatch:
-   inputs:
+    inputs:
       logLevel:
         description: 'Log level'
         required: true
