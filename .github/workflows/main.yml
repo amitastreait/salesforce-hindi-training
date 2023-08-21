@@ -1,0 +1,50 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: 
+  push:
+    branches:
+      - feature/*
+    paths:
+      - 'force-app/**'
+
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3.5.3
+      with:
+        fetch-depth: 0
+        
+    # Install the SFDX CLI using npm command
+    - name: Install the SFDX CLI
+      run: |
+        npm install sfdx-cli --global
+        sfdx force --help
+        
+    - name: Decrypt the Encrypted FIle
+      run: |
+        openssl enc -nosalt -aes-256-cbc -d -in assets/server.key.enc -out ${{secrets.KEY_FILE_PATH}} -base64 -K ${{secrets.KEY}} -iv ${{secrets.IV}}
+    - name: Authenticate with Salesforce
+      run: |
+        sfdx auth:jwt:grant --clientid ${{secrets.CLIENT_KEY}} --jwtkeyfile ${{secrets.KEY_FILE_PATH}} --username ${{secrets.SF_USER_NAME}} --setdefaultdevhubusername --setalias my-hub-org
+    - name: Install SFDX Code Analyzer
+      run: |
+        sfdx plugins:install @salesforce/sfdx-scanner
+    - name: Create reports folder
+      run: |
+        mkdir reports
+    - name: Run Static code analysis
+      run: |
+        sfdx scanner:run -f html -t "force-app" -e "eslint,retire-js,pmd,cpd" -c "Design,Best Practices,Code Style,Performance,Security" --outfile ./reports/scan-reports.html
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.2
+      with:
+        # Artifact name
+        name: static-code-analysis-report
+        path: reports/scan-reports.html
+    
