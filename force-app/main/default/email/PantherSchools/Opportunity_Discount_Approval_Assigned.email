@@ -1,0 +1,33 @@
+Dear User,<br/><br/>
+
+I hope this email finds you well. We are excited to inform you that a new opportunity requires your expert review and approval. Your valuable input is crucial to ensure that we are making informed decisions and pursuing opportunities that align with our goals.<br/><br/>
+
+<b>Opportunity Details:</b><br/>
+
+<b>Opportunity Name:</b> {!Opportunity.Name}<br/>
+<b>Account:</b> {!Opportunity.Account}<br/>
+<b>Amount: </b> {!Opportunity.Amount}<br/>
+<b>Close Date:</b> {!Opportunity.CloseDate}<br/>
+<b>Owner:</b> {!Opportunity.OwnerFullName}<br/>
+
+<br/>
+<b>Next Steps:</b><br/><br/>
+Your review and approval are essential to move forward with this opportunity. Kindly login to Salesforce to review the details and provide your decision. <br/><br/>
+
+Your timely response will help us maintain our momentum and deliver exceptional results.<br/><br/>
+
+To access the opportunity, please follow these steps:<br/>
+
+Click on the opportunity link {!ApprovalRequest.Internal_URL} <br/><br/>
+
+Review the opportunity details and provide your decision using the approval process.
+
+If you have any questions or require further information, please feel free to reach out to me or the opportunity owner, {!Opportunity.OwnerFullName}, at {!Opportunity.OwnerEmail}.<br/><br/>
+
+Thank you for your continued dedication to our success. Your insights and expertise make a significant impact on our business, and we appreciate your prompt attention to this approval request.<br/><br/>
+
+Best regards,<br/>
+
+Amit Singh<br/>
+Salesforce Architect<br/>
+<a href="https://www.pantherschools.com" target="_blank">https://www.pantherschools.com</a>

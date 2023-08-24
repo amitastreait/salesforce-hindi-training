@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Opportunity Discount Approval Assigned</name>
+    <style>none</style>
+    <subject>🚀 New Opportunity Assigned for Your Approval</subject>
+    <textOnly>Dear User,
+I hope this email finds you well. We are excited to inform you that a new opportunity requires your expert review and approval. Your valuable input is crucial to ensure that we are making informed decisions and pursuing opportunities that align with our goals.
+
+Opportunity Details:
+Opportunity Name: {!Opportunity.Name} Account: {!Opportunity.Account} Amount: {!Opportunity.Amount} Close Date: {!Opportunity.CloseDate} Owner: {!Opportunity.OwnerFullName}
+Next Steps:
+Your review and approval are essential to move forward with this opportunity. Kindly log in to Salesforce to review the details and provide your decision. Your timely response will help us maintain our momentum and deliver exceptional results.
+
+To access the opportunity, please follow these steps:
+Click on the opportunity link below
+{!ApprovalRequest.Internal_URL}
+Review the opportunity details and provide your decision using the approval process.  If you have any questions or require further information, please feel free to reach out to me or the opportunity owner, {!Opportunity.OwnerFullName}, at {!Opportunity.OwnerEmail}.
+
+Thank you for your continued dedication to our success. Your insights and expertise make a significant impact on our business, and we appreciate your prompt attention to this approval request.
+
+Best regards,
+Amit Singh
+Salesforce Architect
+https://www.pantherschools.com</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

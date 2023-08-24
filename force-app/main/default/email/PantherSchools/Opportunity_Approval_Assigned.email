@@ -1,0 +1,24 @@
+Dear User, <br/><br/>
+
+I hope this email finds you well. We are excited to inform you that a new opportunity requires your expert review and approval. <br/><br/>
+
+<b>Opportunity Details:</b><br/><br/>
+
+<b>Opportunity Name:</b> {!Opportunity.Name}<br/>
+<b>Account:</b> {!Opportunity.Account}<br/>
+<b>Amount: </b> {!Opportunity.Amount}<br/>
+<b>Close Date:</b> {!Opportunity.CloseDate}<br/>
+<b>Owner: </b> {!Opportunity.OwnerFullName}<br/>
+<b>Record Link : </b> {!Opportunity.Link} <br/><br/>
+
+Next Steps:<br/><br/>
+
+Your review and approval are essential to move forward with this opportunity. Kindly login to Salesforce to review the details and provide your decision.<br/><br/>
+
+
+Thank you for your continued dedication to our success. Your insights and expertise make a significant impact on our business, and we appreciate your prompt attention to this approval request.<br/><br/>
+
+Best regards,<br/>
+Amit Singh<br/>
+Salesforce Architect<br/>
+https://www.pantherschools.com<br/>
