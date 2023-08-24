@@ -1,6 +1,9 @@
-public class ContactsQueueable implements System.Queueable {
+public class ContactsQueueable implements System.Queueable, Database.allowsCallouts, System.Schedulable {
     public Integer numberOfContacts;
     public List<Account> accountList;
+    
+    public void execute(System.SchedulableContext sc){}
+    
     public ContactsQueueable(Integer numberOfContacts, List<Account> accountList){
         this.numberOfContacts = numberOfContacts;
         this.accountList = accountList;

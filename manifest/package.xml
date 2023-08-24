@@ -17,6 +17,28 @@
 		<name>ApexTrigger</name>
 	</types>
 	<types>
+		<members>AccountRequest__c</members>
+		<members>AdminRequestAccess__c</members>
+		<members>Course__c</members>
+		<members>Customer__c</members>
+		<members>DeletedOpportunityProduct__c</members>
+		<members>DeletedOpportunity__c</members>
+		<members>HistoryTracking__c</members>
+		<members>InvoiceLineItem__c</members>
+		<members>Invoice__c</members>
+		<members>Job__c</members>
+		<members>Location__c</members>
+		<members>Payment__c</members>
+		<members>SystemEvent__c</members>
+		<members>System_Event__c</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
+		<members>Opportunity_Approval_Assigned</members>
+		<members>Opportunity_Discount_Approval_Assigned</members>
+		<name>EmailTemplate</name>
+	</types>
+	<types>
 		<members>*</members>
 		<name>FlowDefinition</name>
 	</types>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Component_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Component Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Apex Class</fullName>
+                <default>false</default>
+                <label>Apex Class</label>
+            </value>
+            <value>
+                <fullName>Apex Trigger</fullName>
+                <default>false</default>
+                <label>Apex Trigger</label>
+            </value>
+            <value>
+                <fullName>Lighting Flow</fullName>
+                <default>false</default>
+                <label>Lighting Flow</label>
+            </value>
+            <value>
+                <fullName>Platform Event</fullName>
+                <default>false</default>
+                <label>Platform Event</label>
+            </value>
+            <value>
+                <fullName>Batch Apex</fullName>
+                <default>false</default>
+                <label>Batch Apex</label>
+            </value>
+            <value>
+                <fullName>Queueable Apex</fullName>
+                <default>false</default>
+                <label>Queueable Apex</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
