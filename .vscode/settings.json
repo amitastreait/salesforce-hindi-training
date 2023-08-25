@@ -19,5 +19,6 @@
     "**/.mvn": true,
     "**/.exchange_modules_tmp": true,
     ".mule": true
-  }
+  },
+  "editor.fontSize": 12.5
 }

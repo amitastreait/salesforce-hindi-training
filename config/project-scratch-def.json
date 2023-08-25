@@ -1,6 +1,10 @@
 {
-  "orgName": "amitsingh company",
-  "edition": "Developer",
+  "orgName": "Acme Enterprise",
+  "edition": "Enterprise",
+  "hasSampleData": true,
+  "username": "",
+  "country": "US",
+  "description": "Scratch Org for development purpose",
   "features": ["EnableSetPasswordInApi"],
   "settings": {
     "lightningExperienceSettings": {
