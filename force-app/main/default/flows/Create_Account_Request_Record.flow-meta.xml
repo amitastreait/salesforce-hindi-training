@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <environments>Default</environments>
+    <interviewLabel>Create Account Request Record {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Create Account Request Record</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Create Account Request Record</description>
+        <name>Create_Account_Request_Record</name>
+        <label>Create Account Request Record</label>
+        <locationX>176</locationX>
+        <locationY>194</locationY>
+        <inputAssignments>
+            <field>AccessLevel__c</field>
+            <value>
+                <elementReference>$Record.EventUuid</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Reason__c</field>
+            <value>
+                <elementReference>$Record.ExceptionType</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>User__c</field>
+            <value>
+                <elementReference>$Record.StackTrace</elementReference>
+            </value>
+        </inputAssignments>
+        <object>AccountRequest__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Create_Account_Request_Record</targetReference>
+        </connector>
+        <object>BatchApexErrorEvent</object>
+        <triggerType>PlatformEvent</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

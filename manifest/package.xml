@@ -23,6 +23,10 @@
 	</types>
 	<types>
 		<members>*</members>
+		<name>Flow</name>
+	</types>
+	<types>
+		<members>*</members>
 		<name>FlowDefinition</name>
 	</types>
 	<version>55.0</version>
